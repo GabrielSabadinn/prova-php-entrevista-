@@ -1,38 +1,45 @@
 # Teste de conhecimentos PHP + Banco de dados
-##### Objetivo
-Criar um Crud simples, totalmente desenvolvido em PHP, sem a utilização de frameworks, onde será possível Criar/Editar/Excluir/Listar usuários. O sistema também deve possuir a possibilidade de vincular/desvincular várias cores ao usuário.
+Eu tive que recriar o banco de dados, pois nao tinha jeito de carregar o sqllite por causa de uma dll que nao abria 
 
-##### Estrutura de banco de dados
-A seguinte estrutura será utilizada para persistência dos dados, podendo ser alterada a qualquer momento para melhor funcionamento do sistema:
+-- Database: crud_users
 
-```sql
-    tabela: users
-        id      int not null auto_increment primary key
-        name    varchar(100) not null
-        email   varchar(100) not null
-```
-```sql
-    tabela: colors
-        id      int not null auto_increment primary key
-        name    varchar(50) not null
-```
-```sql
-    tabela: user_colors
-        color_id  int
-        user_id   int
-```
+-- DROP DATABASE IF EXISTS crud_users;
 
-##### Start
-Este projeto conta com uma base sqlite com alguns registros já inseridos. Para início das atividades, use como base o arquivo `index.php`, este é apenas um arquivo exemplo onde é aberta conexão com o banco de dados e lista os usuários em uma tabela.
+CREATE DATABASE crud_users
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'English_United States.1252'
+    LC_CTYPE = 'English_United States.1252'
+    LOCALE_PROVIDER = 'libc'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+	
+	
 
-##### Pontos que serão levados em conta
-- Funcionalidade
-- Organização do código e projeto
-- Apresentação da interface (Poderá usar frameworks CSS como Bootstrap, Material, Foundation etc)
+CREATE TABLE IF NOT EXISTS users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
 
-##### Dicas
-- Para utilizar o banco de dados contido na pasta `database/db.sqlite` é necessário que a sua instalação do php tenha a extensão do sqlite instalada e ativada
-- O Php possui um servidor embutido, você consegue dar start ao projeto abrindo o terminal de comando na pasta baixada e executando `php -S 0.0.0.0:7070` e em seguida abrir o navegador em `http://localhost:7070`
+CREATE TABLE IF NOT EXISTS colors (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL
+);
 
-##### Boa Sorte
-Use seu conhecimento, consulte a documentação e o google, caso ainda houver dúvidas, nos pergunte :D. Boa sorte!
+CREATE TABLE IF NOT EXISTS user_colors (
+    color_id INTEGER,
+    user_id INTEGER,
+    FOREIGN KEY (color_id) REFERENCES colors(id),
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    PRIMARY KEY (color_id, user_id)
+);
+
+SELECT * FROM user_colors
+
+SELECT * FROM user
+
+SELECT * FROM public.users
+ORDER BY id ASC 
