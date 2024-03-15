@@ -6,7 +6,7 @@
     <title>Editar Usuário</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Estilos personalizados */
+      
         body {
             background: linear-gradient(to right, #7bdcb5, #00d084);
             color: #333;
@@ -29,7 +29,7 @@
     <?php
     require 'connection.php';
 
-    // Verificar se o ID foi passado pela URL
+
     if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
         $id = $_GET['id'];
         $connection = new Connection();
@@ -38,7 +38,7 @@
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_OBJ);
 
-        // Verificar se o usuário foi encontrado no banco de dados
+       
         if ($user) {
             ?>
             <h2>Editar Usuário</h2>

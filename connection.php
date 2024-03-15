@@ -26,7 +26,6 @@ class Connection {
 
     public function getConnection()
     {
-        // Retorna a conexão
         return $this->connection;
     }
 

@@ -6,7 +6,7 @@
     <title>Lista de Usuários</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Estilos personalizados */
+        
         body {
             background: linear-gradient(to right, #7bdcb5, #00d084);
             color: #333;
@@ -84,7 +84,7 @@
     </form>
 </div>
 
-<!-- Modal de confirmação de exclusão -->
+
 <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -106,7 +106,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 <script>
-    // Atualizar o link de exclusão com o ID do usuário quando o modal de exclusão é mostrado
+
     var confirmDeleteModal = document.getElementById('confirmDeleteModal');
     confirmDeleteModal.addEventListener('show.bs.modal', function (event) {
         var button = event.relatedTarget;
